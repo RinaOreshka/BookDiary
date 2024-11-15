@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#6A5ACD"
+    android:background="@drawable/main_fon"
     android:orientation="vertical"
     android:padding="16dp"
     tools:context = ".AutActivity">
@@ -78,7 +78,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="500dp"
         android:gravity="center"
-        android:textSize="6pt"
+        android:textSize="8pt"
         android:textColor="#E0FFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
