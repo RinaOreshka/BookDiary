@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "528878892057",
+    "project_id": "bookdiary-decb5",
+    "storage_bucket": "bookdiary-decb5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:528878892057:android:a402346a4f34fb5718e688",
+        "android_client_info": {
+          "package_name": "com.example.bookdiary"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKMI8vNSSy0gXm5Rt--1ZYkgsH4QOpNp0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

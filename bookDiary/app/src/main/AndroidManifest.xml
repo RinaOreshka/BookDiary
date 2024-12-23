@@ -17,6 +17,39 @@
         android:theme="@style/Theme.BookDiary"
         tools:targetApi="31">
         <activity
+            android:name=".TestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FavoriteQuizActivity"
+            android:exported="false" />
+        <activity
+            android:name=".QuizListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FeedbackActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PersonalDataActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LibraryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PersonalMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BookMainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".BookFormActivity"
+            android:exported="false" />
+        <activity
+            android:name=".QuizMainActivity"
+            android:exported="false" />
+        <activity
             android:name=".AutActivity"
             android:exported="false" />
         <activity

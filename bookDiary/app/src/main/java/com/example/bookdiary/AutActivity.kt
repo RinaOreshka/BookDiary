@@ -26,10 +26,17 @@ class AutActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val sharedPreferences = getSharedPreferences("APP_PREFS", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("IS_AUTHENTICATED", true) // Сохраняем состояние авторизации
+        editor.apply()
+
+
         buttonAuth.setOnClickListener {
             val username = userLogin.text.toString()
             val password = userPass.text.toString()
 
+            val intent2 = Intent(this, BookMainActivity::class.java)
             if(username == "" || password == "")
                 Toast.makeText(this, "Не все поля заполнены!", Toast.LENGTH_LONG).show()
             else {
@@ -37,6 +44,11 @@ class AutActivity : AppCompatActivity() {
                 val isAuth: Boolean = db.getUser(username, password)
                 if (isAuth) {
                     Toast.makeText(this, "Пользователь авторизован: $username", Toast.LENGTH_SHORT).show()
+
+
+                    intent2.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+                    startActivity(intent2)
 
                     userLogin.text.clear()
                     userPass.text.clear()
@@ -47,5 +59,6 @@ class AutActivity : AppCompatActivity() {
 
             }
         }
+
     }
 }
