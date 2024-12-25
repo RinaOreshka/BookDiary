@@ -9,7 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class GoalAdapter (var goals: List<Goal>, var context: Context) : RecyclerView.Adapter<GoalAdapter.MyViewHolder>(){
+class QuizAdapter (var quizz: List<Quiz>, var context: Context) : RecyclerView.Adapter<QuizAdapter.MyViewHolder>(){
     class MyViewHolder(view: View): RecyclerView.ViewHolder(view){
         val text: TextView = view.findViewById(R.id.goal_text)
         val button: Button = view.findViewById(R.id.check_goal)
@@ -21,16 +21,14 @@ class GoalAdapter (var goals: List<Goal>, var context: Context) : RecyclerView.A
     }
 
     override fun getItemCount(): Int {
-        return goals.count()
+        return quizz.count()
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val db = DBFormer(context, null)
-        val bookName = db.getBookName(goals[position].book)
-        holder.text.text =bookName
+        holder.text.text =quizz[position].name
         holder.button.setOnClickListener {
-            val intent = Intent(context, GoalActivity::class.java)
-            intent.putExtra("goal_id", goals[position].goalId)
+            val intent = Intent(context, QuizActActivity::class.java)
+            intent.putExtra("quiz_id", quizz[position].id)
             context.startActivity(intent)
         }
     }

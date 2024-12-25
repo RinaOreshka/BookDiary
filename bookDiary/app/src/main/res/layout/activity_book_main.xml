@@ -25,30 +25,6 @@
             android:gravity="center"/>
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/lists_button"
-        android:layout_width="380dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/rounded_button"
-        android:text="Подборки"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relative_layout"
-        android:textSize="18sp"
-        android:layout_marginBottom="16dp"/>
-
-    <Button
-        android:id="@+id/plans_button"
-        android:layout_width="380dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_button"
-        android:text="Книжные планы"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/lists_button"/>
 
     <Button
         android:id="@+id/goals_button"
@@ -60,19 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/plans_button"/>
-
-    <Button
-        android:id="@+id/reviews_button"
-        android:layout_width="380dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_button"
-        android:text="Отзывы"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/goals_button"/>
+        app:layout_constraintTop_toBottomOf="@+id/relative_layout"/>
 
     <Button
         android:id="@+id/quotes_button"
@@ -84,7 +48,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/reviews_button"/>
+        app:layout_constraintTop_toBottomOf="@+id/goals_button"/>
 
     <Button
         android:id="@+id/library_button"
@@ -110,6 +74,7 @@
         android:layout_marginTop="20dp"
         app:layout_constraintTop_toBottomOf="@+id/library_button"/>
 
+
     <LinearLayout
         android:id="@+id/bottomContainer"
         android:layout_width="match_parent"
@@ -123,7 +88,7 @@
             android:id = "@+id/book_button"
             android:layout_width="0dp"
             android:backgroundTint="#CFB9FF"
-            android:textColor="#111111"
+            android:textColor="@color/textColor"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Books"/>
@@ -132,7 +97,7 @@
             android:id = "@+id/quiz_button"
             android:layout_width="0dp"
             android:backgroundTint="#CFB9FF"
-            android:textColor="#111111"
+            android:textColor="@color/textColor"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Queeze"/>
@@ -141,7 +106,7 @@
             android:id = "@+id/personal_button"
             android:layout_width="0dp"
             android:backgroundTint="#CFB9FF"
-            android:textColor="#111111"
+            android:textColor="@color/textColor"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Personal"/>

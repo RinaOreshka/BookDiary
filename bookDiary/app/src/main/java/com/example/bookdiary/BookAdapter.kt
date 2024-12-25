@@ -7,12 +7,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 class BookAdapter (var books: List<Book>, var context: Context) : RecyclerView.Adapter<BookAdapter.MyViewHolder>(){
     class MyViewHolder(view: View): RecyclerView.ViewHolder(view){
         val title: TextView = view.findViewById(R.id.book_title)
         val author: TextView = view.findViewById(R.id.book_author)
         val description: TextView = view.findViewById(R.id.book_description)
+        val photo: ImageView = view.findViewById(R.id.book_image)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -28,5 +30,10 @@ class BookAdapter (var books: List<Book>, var context: Context) : RecyclerView.A
         holder.title.text = books[position].name
         holder.author.text = books[position].author
         holder.description.text = books[position].description
+        val imageUrl: String? = books[position].photo
+
+        Glide.with(context)
+            .load(imageUrl)
+            .into(holder.photo)
     }
 }

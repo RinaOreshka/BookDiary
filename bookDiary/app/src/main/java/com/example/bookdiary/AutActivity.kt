@@ -1,5 +1,6 @@
 package com.example.bookdiary
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -26,10 +27,7 @@ class AutActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val sharedPreferences = getSharedPreferences("APP_PREFS", MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.putBoolean("IS_AUTHENTICATED", true) // Сохраняем состояние авторизации
-        editor.apply()
+
 
 
         buttonAuth.setOnClickListener {
@@ -42,9 +40,13 @@ class AutActivity : AppCompatActivity() {
             else {
                 val db = DBFormer(this, null)
                 val isAuth: Boolean = db.getUser(username, password)
+                val sharedPreferences = this.getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+                val myId = db.getUserId(username, password)
+                editor.putString("userId", myId)
+                editor.apply()
                 if (isAuth) {
                     Toast.makeText(this, "Пользователь авторизован: $username", Toast.LENGTH_SHORT).show()
-
 
                     intent2.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 
@@ -52,6 +54,11 @@ class AutActivity : AppCompatActivity() {
 
                     userLogin.text.clear()
                     userPass.text.clear()
+
+                    val sharedPreferences = getSharedPreferences("APP_PREFS", MODE_PRIVATE)
+                    val editor = sharedPreferences.edit()
+                    editor.putBoolean("IS_AUTHENTICATED", true)
+                    editor.apply()
                 }
                 else{
                     Toast.makeText(this, "Пользователь не зарегистрирован!", Toast.LENGTH_SHORT).show()

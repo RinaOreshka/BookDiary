@@ -6,12 +6,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:id = "@+id/relative_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradient_background"
+        android:padding="0dp"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="Цель"
+            android:textSize="30sp"
+            android:textColor="#6A1B9A"
+            android:gravity="center"/>
+    </RelativeLayout>
+
     <EditText
         android:id="@+id/start_date"
         android:hint="Дата начала"
-        android:layout_width="0dp"
+        android:layout_width="350dp"
+        android:textColor="@color/textColor"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/relative_layout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"/>
@@ -19,8 +38,9 @@
     <EditText
         android:id="@+id/end_date"
         android:hint="Предположительная дата конца"
-        android:layout_width="0dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:textColor="@color/textColor"
         app:layout_constraintTop_toBottomOf="@id/start_date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,8 +48,8 @@
 
     <EditText
         android:id="@+id/page_sum"
-        android:hint="Дата начала"
-        android:layout_width="0dp"
+        android:hint="Количество страниц"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/end_date"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,61 +59,22 @@
     <EditText
         android:id="@+id/book_title"
         android:hint="Книга, которую читаем"
-        android:layout_width="0dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/page_sum"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp"/>
 
-    <CheckBox
-        android:id="@+id/read_checkbox"
-        android:text="Прочитал"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/book_title"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="8dp"/>
-
     <Button
-        android:id="@+id/extend_button"
-        android:text="Продлить"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/read_checkbox"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="8dp"/>
-
-    <Switch
-        android:id="@+id/notification_switch"
-        android:text="Настроить уведомления"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/extend_button"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="8dp"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
-
-    <EditText
-        android:id="@+id/"
-        android:hint="Книга, которую читаем"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/notification_switch"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"/>
-
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        style="?android:attr/progressBarStyleHorizontal"
+        android:id="@+id/save_button"
+        android:hint="Сохранить"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:max="100"
-        android:progress="0"
-        app:layout_constraintTop_toBottomOf="@id/notification_switch"
+        android:textColorHint="@color/textColor"
+        app:layout_constraintTop_toBottomOf="@id/book_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="30dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

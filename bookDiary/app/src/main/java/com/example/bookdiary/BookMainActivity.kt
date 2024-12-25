@@ -16,10 +16,7 @@ class BookMainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_book_main)
 
-        val buttonLists: Button = findViewById(R.id.lists_button)
-        val buttonPlans: Button = findViewById(R.id.plans_button)
         val buttonGoals: Button = findViewById(R.id.goals_button)
-        val buttonReviews: Button = findViewById(R.id.reviews_button)
         val buttonQuotes: Button = findViewById(R.id.quotes_button)
         val buttonLibrary: Button = findViewById(R.id.library_button)
         val buttonAddBook: Button = findViewById(R.id.add_book)
@@ -29,14 +26,12 @@ class BookMainActivity : AppCompatActivity() {
 
         buttonPersonal.setOnClickListener{
             val intent = Intent(this, PersonalMainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
         buttonQuiz.setOnClickListener{
             val intent = Intent(this, QuizMainActivity::class.java)
-            startActivity(intent)
-        }
-        buttonBook.setOnClickListener{
-            val intent = Intent(this, BookMainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
         buttonAddBook.setOnClickListener{
@@ -47,10 +42,13 @@ class BookMainActivity : AppCompatActivity() {
             val intent = Intent(this, LibraryActivity::class.java)
             startActivity(intent)
         }
-        buttonLists.setOnClickListener{
-            val intent = Intent(this, TestActivity::class.java)
+        buttonQuotes.setOnClickListener{
+            val intent = Intent(this, QuotesListActivity::class.java)
             startActivity(intent)
         }
-
+        buttonGoals.setOnClickListener{
+            val intent = Intent(this, GoalsListActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

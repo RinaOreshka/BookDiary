@@ -15,6 +15,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val db = DBFormer(this, null)
+
         val linkToAut: TextView = findViewById(R.id.link_to_aut)
 
         linkToAut.setOnClickListener{
@@ -36,7 +38,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val db = DBFormer(this, null)
 
         fun areFieldsEmpty(vararg fields: String): Boolean {
             return fields.any { it.isEmpty() }
@@ -50,7 +51,11 @@ class MainActivity : AppCompatActivity() {
             if(areFieldsEmpty(username, email, password))
                 Toast.makeText(this, "Не все поля заполнены!", Toast.LENGTH_LONG).show()
             else {
-                db.addUser(username, email, password)
+                val sharedPreferences = this.getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+                val myId = db.addUser(username, email, password)
+                editor.putString("userId", myId)
+                editor.apply()
                 Toast.makeText(this, "Пользователь зарегистрирован: $username", Toast.LENGTH_SHORT).show()
                 userLogin.text.clear()
                 userEmail.text.clear()

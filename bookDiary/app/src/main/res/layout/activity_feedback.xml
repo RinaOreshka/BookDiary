@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/main_fon"
+    android:fitsSystemWindows="true"
     android:padding="16dp">
 
     <TextView
@@ -27,7 +28,7 @@
         app:layout_constraintStart_toStartOf = "parent"/>
 
     <EditText
-        android:id="@+id/edit_name"
+        android:id="@+id/edit_name_feed"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Введите ваше имя"
@@ -40,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Email"
-        app:layout_constraintTop_toBottomOf="@id/edit_name"
+        app:layout_constraintTop_toBottomOf="@id/edit_name_feed"
         app:layout_constraintStart_toStartOf = "parent"/>
 
     <EditText
@@ -49,7 +50,7 @@
         android:layout_height="wrap_content"
         android:hint="Введите ваш email"
         android:inputType="textEmailAddress"
-        app:layout_constraintTop_toBottomOf="@id/edit_name"
+        app:layout_constraintTop_toBottomOf="@id/edit_name_feed"
         app:layout_constraintStart_toStartOf = "parent"
         app:layout_constraintEnd_toEndOf = "parent"
         android:layout_marginTop="4dp"/>

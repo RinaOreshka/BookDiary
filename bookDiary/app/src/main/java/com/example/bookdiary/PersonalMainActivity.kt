@@ -3,9 +3,12 @@ package com.example.bookdiary
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -16,46 +19,68 @@ class PersonalMainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_personal_main)
-        val buttonPersonalData: Button = findViewById(R.id.personal_data_button)
-        val buttonSettings: Button = findViewById(R.id.settings_button)
         val buttonFeedback: Button = findViewById(R.id.feedback_button)
         val buttonQuit: Button = findViewById(R.id.quit_button)
-        val buttonDelete: Button = findViewById(R.id.delete_button)
+        val deleteButton: Button = findViewById(R.id.delete_button)
         val buttonQuiz: Button = findViewById(R.id.quiz_button)
         val buttonBook: Button = findViewById(R.id.book_button)
         val buttonPersonal: Button = findViewById(R.id.personal_button)
 
-        buttonPersonal.setOnClickListener{
-            val intent = Intent(this, PersonalMainActivity::class.java)
-            startActivity(intent)
-        }
         buttonQuiz.setOnClickListener{
             val intent = Intent(this, QuizMainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
         buttonBook.setOnClickListener{
             val intent = Intent(this, BookMainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
-        buttonPersonalData.setOnClickListener{
-            val intent = Intent(this, PersonalDataActivity::class.java)
-            startActivity(intent)
-        }
-        buttonSettings.setOnClickListener{
-            val intent = Intent(this, SettingsActivity::class.java)
-            startActivity(intent)
-        }
+
         buttonFeedback.setOnClickListener{
             val intent = Intent(this, FeedbackActivity::class.java)
             startActivity(intent)
         }
-        buttonQuit.setOnClickListener{
-            val sharedPreferences = getSharedPreferences("app_pref", Context.MODE_PRIVATE)
+
+        fun saveAuthenticationStatus(isAuthenticated: Boolean) {
+            val sharedPreferences = getSharedPreferences("APP_PREFS", MODE_PRIVATE)
             val editor = sharedPreferences.edit()
-            editor.remove("user_id")
+            editor.putBoolean("IS_AUTHENTICATED", isAuthenticated)
             editor.apply()
-            val intent = Intent(this, MainActivity::class.java)
+        }
+
+        buttonQuit.setOnClickListener{
+            saveAuthenticationStatus(false)
+            val intent = Intent(this, AutActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
+            finish()
+        }
+        deleteButton.setOnClickListener {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Подтверждение")
+            builder.setMessage("Вы уверены, что хотите удалить текущего пользователя?")
+            fun deleteUser() {
+
+                val db = DBFormer(this, null)
+                db.deleteUser()
+                Toast.makeText(this, "Пользователь удален", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, AutActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            }
+
+            builder.setPositiveButton("Да") { dialog, which ->
+                deleteUser()
+            }
+
+            builder.setNegativeButton("Нет") { dialog, which ->
+                dialog.dismiss() // Просто закрываем диалог
+            }
+
+
+            val dialog: AlertDialog = builder.create()
+            dialog.show()
         }
     }
 }

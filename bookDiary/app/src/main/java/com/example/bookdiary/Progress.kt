@@ -1,4 +1,4 @@
 package com.example.bookdiary
 
-class Progress {
+class Progress(val pageNum: Int) {
 }
